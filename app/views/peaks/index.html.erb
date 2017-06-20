@@ -1,0 +1,6 @@
+<h2>Welcome to the 46 Peaks App</h1>
+<h4>Click on a peak below to learn more</h4>
+<% @peaks.each do |peak| %>
+  <p><%= peak.name %></p>
+  <%= link_to "Learn more", peak_path(peak) %>
+<% end %>

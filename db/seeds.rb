@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Peak.create(name: "Mt. Colden", elevation: 4715, image: "mt_colden.jpg")
+Peak.create(name: "Mt. Marcy", elevation: 5344, image: "mt_marcy.jpg")
