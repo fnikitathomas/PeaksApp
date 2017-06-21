@@ -1,0 +1,5 @@
+<%= simple_form_for([@peak, @peak.tips.build]) do |f| %>
+  <%= f.input :difficulty_rating %>
+  <%= f.input :comment %>
+  <%= f.button :submit %>
+<% end %>

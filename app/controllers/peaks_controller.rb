@@ -1,4 +1,5 @@
 class PeaksController < ApplicationController
+
   def index
     @peaks = Peak.all
   end
@@ -6,4 +7,5 @@ class PeaksController < ApplicationController
   def show
     @peak = Peak.find(params[:id])
   end
+
 end

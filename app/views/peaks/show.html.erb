@@ -1,3 +1,5 @@
 <%= image_tag @peak.image %>
 <h3><%= @peak.name %></h3>
 <p><%= @peak.elevation %>'</p>
+<%= link_to "What do you think about this peak?", new_peak_tip_path(@peak) %>
+<%= render @peak.tips %>
