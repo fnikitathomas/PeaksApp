@@ -16,6 +16,3 @@ Peak.create(name: "Iroquois Peak", elevation: 4840, image: "iroquois_peak.jpg")
 Peak.create(name: "Basin Mountain", elevation: 4827, image: "basin.jpg")
 Peak.create(name: "Gothics", elevation: 4736, image: "gothics.jpg")
 Peak.create(name: "Mount Colden", elevation: 4714, image: "mt_colden.jpg")
-
-
-
