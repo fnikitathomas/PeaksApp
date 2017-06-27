@@ -1,0 +1,11 @@
+<%= @user.email %>
+<h3>You have climbed the following peaks:</h3>
+<h4>Select the peaks that you have reached</h4>
+<%= form_tag do |f| %>
+  <% @peaks.each do |peak| %>
+    <%= check_box_tag(peak.name) %>
+    <%= label_tag(:peaks, peak.name) %>
+    <br>
+  <% end %>
+  <%= submit_tag("Add") %>
+<% end %>
