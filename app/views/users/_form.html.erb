@@ -1,0 +1,7 @@
+<%= form_for(current_user, url: users_path) do |f| %> 
+  <% Peak.all.each do |peak| %>
+    <%= check_box_tag "user[peak_names][]", peak.name %>
+    <%= peak.name %><br>
+  <% end %>
+  <%= f.submit %>
+<% end %>
