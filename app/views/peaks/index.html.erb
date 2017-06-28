@@ -49,11 +49,20 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="span6"><%= image_tag("logo.png", :class => "pull-left") %><p class="h3 text-center">Welcome to the PeaksApp</p>
+        <p class="h4 text-justify">The Adirondack High Peaks is the name given to 46 mountain peaks in the Adirondack Mountains of New York,
+         United States that were originally believed to comprise all of the Adirondack peaks higher than 4,000 feet (1,219 m).
+         [1] However, later surveying showed that four of the peaks in the group are actually under this elevation, and one
+          additional peak that is close to this elevation had been overlooked. Due to tradition, no mountains were removed from or added to 
+          the group as a result of the revised elevation estimates. The region contains many alpine lakes and meadows, wetlands, streams, and forests.
+        </p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <p class="h2 text-center">Placeholder for DEC Info</p>
+    </div>
+</div>
 
-
-<h2>Welcome to the 46 Peaks App</h1>
-<h4>Click on a peak below to learn more</h4>
-<% @peaks.each do |peak| %>
-  <p><%= link_to peak.name, peak_path(peak) %><p>
-<% end %>
 
