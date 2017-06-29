@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626223712) do
+ActiveRecord::Schema.define(version: 20170628223518) do
 
   create_table "climbs", force: :cascade do |t|
     t.integer "peak_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170626223712) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ascent"
   end
 
   create_table "tips", force: :cascade do |t|
