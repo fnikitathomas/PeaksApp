@@ -16,7 +16,7 @@ default: &default
   username: postgres
   password: xQftfh$9
 
-#default: &default
+# default: &default
 #  adapter: sqlite3
 #  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 #  timeout: 5000
