@@ -1,5 +1,16 @@
-<%= image_tag @peak.image %>
-<h3><%= @peak.name %></h3>
-<p><%= @peak.elevation %>'</p>
-<%= link_to "What do you think about this peak?", new_peak_tip_path(@peak) %>
+<div class="container">
+    <%= image_tag @peak.image, class: "showpic"%>
+</div>
+<div class="container pushdown">
+    <div class="row">
+        <div class="">
+            <h3><%= @peak.name %></h3>
+        </div>
+        <div class=""><p>Elevation: <%= @peak.elevation %>' <span> Ascent: <%= @peak.ascent %>'</span></p></div>
+        <div class=""> 
+            <%= link_to "What do you think about this peak?", new_peak_tip_path(@peak) %>
+        </div>
+    </div>
+</div>
+
 <%= render @peak.tips %>
