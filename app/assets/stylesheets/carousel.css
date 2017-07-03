@@ -39,7 +39,7 @@ body {
 
 /* Carousel base class */
 .carousel {
-  height: 500px;
+  height: 350px;
   margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
@@ -49,7 +49,7 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  height: 500px;
+  height: 350px;
   background-color: #777;
 }
 .carousel-inner > .item > img {
@@ -57,13 +57,26 @@ body {
   top: 0;
   left: 0;
   min-width: 100%;
-  height: 500px;
+  height: auto;
 }
 /* Added by me ...*/
 .pull-left {
   float: left;
 }
 
+.showpic {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  min-width: 80%;
+  height: 350px;
+
+} 
+.pushdown {
+  position: absolute; 
+  top: 450px;
+  left: 100px;
+}
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
