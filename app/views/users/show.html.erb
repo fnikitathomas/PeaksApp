@@ -1,28 +1,57 @@
-<%= @user.email %>
-<h3>You have climbed the following peaks:</h3>
+<div class="col-md-7">
+  <%= @user.email %>
+  <h3>You have climbed the following peaks:</h3>
 
-<ul>
+  <ul>
+    <% for peak in @user.peak_ids do %>
+      <li><%= Peak.find(peak).name %></li>
+    <% end %>
+  </ul>
+
+  <% total_ascent = 0 %>
   <% for peak in @user.peak_ids do %>
-    <li><%= Peak.find(peak).name %></li>
+    <% total_ascent += Peak.find(peak).ascent %>
   <% end %>
-</ul>
 
-<% total_ascent = 0 %>
-<% for peak in @user.peak_ids do %>
-  <% total_ascent += Peak.find(peak).ascent %>
-<% end %>
+  <h3>You have climbed a total of <%= total_ascent %> feet!</h3>
 
-<h3>You have climbed a total of <%= total_ascent %> feet!</h3>
+  <% total_climbed = @user.peak_ids.length %>
+  <h3>You have climbed <%= (total_climbed/46.0*100).round %>% of the peaks!</h3>
 
-<% total_climbed = @user.peak_ids.length %>
-<h3>You have climbed <%= (total_climbed/46.0*100).round %>% of the peaks!</h3>
+  <h3>Add more climbs</h3>
 
-<h3>Add more climbs</h3>
-
-<%= form_for current_user do |f| %>
-  <% for peak in Peak.all %>
-    <%= check_box_tag "user[peak_ids][]", peak.id, current_user.peaks.include?(peak) %>
-    <%= peak.name %><br>
+  <%= form_for current_user do |f| %>
+    <% for peak in Peak.all %>
+      <%= check_box_tag "user[peak_ids][]", peak.id, current_user.peaks.include?(peak) %>
+      <%= peak.name %><br>
+    <% end %>
+    <p><%= f.submit %></p>
   <% end %>
-  <p><%= f.submit %></p>
-<% end %>
+</div>  
+
+<div class="col-md-5">
+  <br>
+  <br>
+  <br>
+  <% if total_ascent > 50000 %>
+    <%= image_tag 'badges/chevron-20.png', :size => "130x130" %>
+    <p>50,000 ft!</p>
+  <% end %>
+
+  <% if total_climbed > 22 %>
+    <%= image_tag 'badges/chevron-6.png', :size => "130x130" %>
+    <p>Half way to 46!</p>
+  <% end %>
+
+  <% if @user.peak_ids.include? 1%>
+    <%= image_tag 'badges/chevron-11.png', :size => "130x130" %>
+    <p>Highest point in New York State!</p>
+  <% end %>  
+
+  <% if total_climbed == 46 %>
+    <%= image_tag 'badges/002-crown.png', :size => "130x130" %>
+    <p>You've climbed all 46 peaks!</p>
+  <% end %>
+
+
+</div>
