@@ -82,7 +82,7 @@
     <div class="col-lg-4">
         <%= image_tag("badges/snow.png", :class => "no-img-circle", height: 160, width: 160)%>
         <h2>Current Conditions</h2>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <p><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Open Modal</button></p>
     </div>
     <div class="col-lg-4">
         <p class="h2 text-center"> </p>
@@ -90,4 +90,41 @@
 </div>
 </div>
 
+<div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Current Conditons</h4>
+        </div>
+        <div class="modal-body">
+            <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+                <div class="card-block">
+                    <h4 class="card-title" style="color:white;"><%= @seasonal_notices %></h4>
+                    <p class="card-text" style="color:white;"><%= @weather_text %> <%= link_to "National Weather Service", @weather_anchor_href %></p>
+                    <p class="card-text" style="color:white;"><%= @fire_text %> <%= link_to "Fire Map", @fire_anchor_href %></p>
+                    <p class="card-text" style="color:white;"><%= @trail_text %></p>
+                    <p class="card-text" style="color:white;"><%= @water_text %> <%= link_to "USGS", @water_anchor_href %></p>
+                    <p class="card-text" style="color:white;"><%= @insects_text %></p>
+                    <p class="card-text" style="color:white;"><%= @insects_ulli %></p>
+                    <p class="card-text" style="color:white;"><%= @summits_text %> <%= link_to "Summits Weather", @summits_anchor_href %></p>
+                    <p class="card-text" style="color:white;"><%= @climb_text %> <%= link_to "Routes", @climb_anchor_href %></p>
+                    <a href="http://www.dec.ny.gov/outdoor/7865.html" class="btn btn-primary">Visit Site</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
 
