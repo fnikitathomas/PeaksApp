@@ -20,14 +20,27 @@
     <h3>You have climbed <%= (total_climbed/46.0*100).round %>% of the peaks!</h3>
 
     <h3>Add more climbs</h3>
-
+<div class="container">
     <%= form_for current_user do |f| %>
-      <% for peak in Peak.all %>
-        <%= check_box_tag "user[peak_ids][]", peak.id, current_user.peaks.include?(peak) %>
-        <%= peak.name %><br>
-      <% end %>
+      <!-- I kept the form_for construct, but changed the logic[here @peaks is an array!]  N. -->
+        <% 5.times do %>
+          <div class="row">
+            <% @peaks.slice(@idx,@rng).each do |peak| %>
+              <div class="col-md-1 small text-nowrap">
+                <%= image_tag("badges/snow.png", :class => "no-img-circle center-block", height: 50, width: 50)%>
+                <p><!-- paragraph tag needed to get the checkbox and text beneath the image N. -->
+                <%= check_box_tag "user[peak_ids][]", peak.id, current_user.peaks.include?(peak) %>
+                <%= peak.name %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+          <% @idx += @rng %><!-- instance variables for loop control N. -->
+        <% end %>
+      
       <p><%= f.submit %></p>
     <% end %>
+</div>
   </div>  
 
   <div class="col-md-5">
