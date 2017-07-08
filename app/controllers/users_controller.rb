@@ -2,7 +2,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @peaks = Peak.all
+    @peaks = Peak.all.to_a
+    @idx = 0
+    @rng = 10
   end
 
   def edit
