@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20170710222917) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "climbs", force: :cascade do |t|
-    t.integer "peak_id"
-    t.integer "user_id"
+    t.bigint "peak_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["peak_id"], name: "index_climbs_on_peak_id"
