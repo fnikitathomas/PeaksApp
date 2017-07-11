@@ -1,7 +1,8 @@
 <div class="container">
+  
   <div class="col-md-7">
     <%= @user.email %>
-    <h3>You have climbed the following peaks:</h3>
+    <h4>You have climbed the following peaks:</h4>
 
     <ul>
       <% for peak in @user.peak_ids do %>
@@ -14,20 +15,25 @@
       <% total_ascent += Peak.find(peak).ascent %>
     <% end %>
 
-    <h3>You have climbed a total of <%= total_ascent %> feet!</h3>
+    <h4>You have climbed a total of <%= total_ascent %> feet!</h4>
 
     <% total_climbed = @user.peak_ids.length %>
-    <h3>You have climbed <%= (total_climbed/46.0*100).round %>% of the peaks!</h3>
+    <h4>You have climbed <%= (total_climbed/46.0*100).round %>% of the peaks!</h4>
 
-    <h3>Add more climbs</h3>
+    <h4>Add more climbs</h4>
 <div class="container">
-    <%= form_for current_user do |f| %>
+    <%= form_for current_user, :remote => true do |f| %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <!-- I kept the form_for construct, but changed the logic[here @peaks is an array!]  N. -->
         <% 5.times do %>
           <div class="row">
             <% @peaks.slice(@idx,@rng).each do |peak| %>
               <div class="col-md-1 small text-nowrap">
-                <%= image_tag("badges/snow.png", :class => "no-img-circle center-block", height: 50, width: 50)%>
+                <% if current_user.peaks.include?(peak) %>
+                <%= image_tag("badges/green.png", :class => "no-img-circle center-block", :id => peak.id, height: 50, width: 50)%>
+                <% else %>
+                <%= image_tag("badges/snow.png", :class => "no-img-circle center-block", :id => peak.id, height: 50, width: 50)%>
+                <% end %>
                 <p><!-- paragraph tag needed to get the checkbox and text beneath the image N. -->
                 <%= check_box_tag "user[peak_ids][]", peak.id, current_user.peaks.include?(peak) %>
                 <%= peak.name %>
@@ -41,6 +47,8 @@
       <p><%= f.submit %></p>
     <% end %>
 </div>
+<%= link_to "Test", user_path, remote: true %>
+<div id="test" style="display:none;"></div>
   </div>  
 
   <div class="col-md-5">

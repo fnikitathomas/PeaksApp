@@ -11,6 +11,7 @@
 // about supported directives.
 //
 
+//= require openlayers-rails
 //= require jquery
 //= require bootstrap-sprockets
 //= require rails-ujs

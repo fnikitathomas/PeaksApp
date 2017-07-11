@@ -1,0 +1,19 @@
+  <div class="col-md-7">
+    <%= @user.email %>
+    <h3>You have climbed the following peaks:</h3>
+
+    <ul>
+      <% for peak in @user.peak_ids do %>
+        <li><%= Peak.find(peak).name %></li>
+      <% end %>
+    </ul>
+
+    <% total_ascent = 0 %>
+    <% for peak in @user.peak_ids do %>
+      <% total_ascent += Peak.find(peak).ascent %>
+    <% end %>
+
+    <h3>You have climbed a total of <%= total_ascent %> feet!</h3>
+
+    <% total_climbed = @user.peak_ids.length %>
+    <h3>You have climbed <%= (total_climbed/46.0*100).round %>% of the peaks!</h3>

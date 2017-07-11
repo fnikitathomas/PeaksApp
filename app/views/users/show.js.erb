@@ -1,0 +1,10 @@
+$('#test').html("<%= j (render 'testajax') %>");
+$('#test').slideDown(350);
+$('#no-refresh').html('<%= j render "show" %>');
+<% @peaks.each do |peak| %>
+  <% if @user.peaks.include?(peak) %>
+    $('#<%= peak.id %>').attr("src", "<%= image_path("badges/green.png") %>");
+  <% else %>
+    $('#<%= peak.id %>').attr("src", "<%= image_path("badges/snow.png") %>");
+  <% end %>
+<% end %>
